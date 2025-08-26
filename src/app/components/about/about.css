@@ -1,0 +1,93 @@
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b1022, #1c1f3b);
+}
+
+.about-card {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  background: #11162e;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  color: #e5e7eb;
+  transition: transform 0.3s ease;
+}
+.about-card:hover {
+  transform: translateY(-6px);
+}
+
+.profile-pic {
+  width: 200px; /* fixed width */
+  height: 200px; /* same as width -> square */
+  border-radius: 50%; /* perfect circle */
+  overflow: hidden; /* crop excess */
+  border: 4px solid #34d399;
+  box-shadow: 0 6px 20px rgba(52, 211, 153, 0.3);
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures image fills square */
+  display: block;
+}
+
+.about-content {
+  text-align: left;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #34d399;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+
+.intro {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+.cta-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  background: #34d399;
+  color: #0b1022;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: #22c07c;
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #34d399;
+  color: #34d399;
+}
+.btn-outline:hover {
+  background: #34d399;
+  color: #0b1022;
+}

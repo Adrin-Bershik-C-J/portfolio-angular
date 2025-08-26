@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #0b1022;
+  color: #e5e7eb;
+}
+
+/* Smooth scroll for nicer in-page navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus outlines */
+:focus {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+}
