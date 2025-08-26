@@ -1,52 +1,173 @@
 .nav {
-position: sticky;
-top: 0;
-z-index: 50;
-backdrop-filter: blur(8px);
-background: rgba(2,6,23,0.35);
-border-bottom: 1px solid rgba(255,255,255,0.06);
-transition: background .2s ease, border-color .2s ease;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  background: rgba(2, 6, 23, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
-.nav.scrolled { background: rgba(2,6,23,0.6); border-color: rgba(255,255,255,0.1); }
 
+.nav.scrolled {
+  background: rgba(2, 6, 23, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
 
 .nav-inner {
-height: 72px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 1rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
-
 
 .brand {
-font-weight: 800;
-text-decoration: none;
-color: #ffffff;
-letter-spacing: .5px;
+  font-weight: 800;
+  text-decoration: none;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
+.links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-.links { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
 .links a {
-text-decoration: none;
-color: #e5e7eb;
-padding: .5rem .75rem;
-border-radius: .75rem;
-transition: background .15s ease, color .15s ease;
+  text-decoration: none;
+  color: #e5e7eb;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  transition: background 0.15s ease, color 0.15s ease;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
-.links a:hover { background: rgba(255,255,255,0.06); }
-.links a.active { background: rgba(34,197,94,0.15); color: #bbf7d0; }
 
+.links a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
 
-.hamburger { display: none; background: transparent; border: 0; }
-.hamburger span { display: block; width: 24px; height: 2px; background: #e5e7eb; margin: 6px 0; }
+.links a.active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #bbf7d0;
+}
 
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+}
 
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #e5e7eb;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Tablet styles */
 @media (max-width: 768px) {
-.hamburger { display: block; }
-.links { position: fixed; inset: 72px 0 auto 0; background: rgba(2,6,23,0.95); flex-direction: column; padding: 1rem; transform: translateY(-120%); transition: transform .2s ease; }
-body.open-nav .links { transform: translateY(0); }
+  .nav-inner {
+    padding: 0 1rem;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 1rem;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .links.open {
+    transform: translateY(0);
+  }
+  
+  .links a {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .links a:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .nav-inner {
+    height: 64px;
+    padding: 0 0.75rem;
+  }
+  
+  .brand {
+    font-size: 1.2rem;
+  }
+  
+  .links {
+    top: 64px;
+    padding: 0.75rem;
+  }
+  
+  .links a {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+  
+  .hamburger {
+    padding: 6px;
+  }
+  
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+  .nav-inner {
+    padding: 0 0.5rem;
+  }
+  
+  .brand {
+    font-size: 1.1rem;
+  }
 }

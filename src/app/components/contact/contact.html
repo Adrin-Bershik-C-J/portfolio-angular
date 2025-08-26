@@ -5,16 +5,81 @@
 
     <div class="contact-links">
       <a class="btn" href="mailto:{{ email }}">
-        ✉️ Email Me
+        ✉️ Email Me Directly
       </a>
     </div>
 
-    <!-- Optional Contact Form -->
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" rows="4" required></textarea>
-      <button type="submit">Send Message</button>
+    <!-- Contact Form -->
+    <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <div class="form-group">
+        <input 
+          type="text" 
+          placeholder="Your Name" 
+          [(ngModel)]="formData.name"
+          name="name"
+          #name="ngModel"
+          required />
+        <div *ngIf="name.invalid && name.touched" class="error-message">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input 
+          type="email" 
+          placeholder="Your Email" 
+          [(ngModel)]="formData.email"
+          name="email"
+          #email="ngModel"
+          required 
+          email />
+        <div *ngIf="email.invalid && email.touched" class="error-message">
+          Please enter a valid email address
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea 
+          placeholder="Your Message" 
+          rows="4" 
+          [(ngModel)]="formData.message"
+          name="message"
+          #message="ngModel"
+          required></textarea>
+        <div *ngIf="message.invalid && message.touched" class="error-message">
+          Message is required
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        [disabled]="contactForm.invalid || isSubmitting"
+        [class.loading]="isSubmitting">
+        {{ isSubmitting ? 'Opening Email Client...' : 'Send Message' }}
+      </button>
+
+      <div *ngIf="submitMessage" class="submit-message" 
+           [class.success]="submitMessage.includes('opened')"
+           [class.error]="!submitMessage.includes('opened')">
+        {{ submitMessage }}
+      </div>
     </form>
+
+    <div class="contact-info">
+      <p class="info-text">
+        <strong>Alternative ways to reach me:</strong>
+      </p>
+      <div class="social-links">
+        <a href="https://github.com/Adrin-Bershik-C-J" target="_blank" class="social-btn">
+          🐱 GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/adrinbershik/" target="_blank" class="social-btn">
+          💼 LinkedIn
+        </a>
+        <a href="https://linktr.ee/adrinbershik" target="_blank" class="social-btn">
+          🔗 Linktree
+        </a>
+      </div>
+    </div>
   </div>
 </section>

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
   min-height: 100vh;
   background: linear-gradient(135deg, #0b1022, #1c1f3b);
 }
@@ -25,18 +25,19 @@
 }
 
 .profile-pic {
-  width: 200px; /* fixed width */
-  height: 200px; /* same as width -> square */
-  border-radius: 50%; /* perfect circle */
-  overflow: hidden; /* crop excess */
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
   border: 4px solid #34d399;
   box-shadow: 0 6px 20px rgba(52, 211, 153, 0.3);
+  justify-self: center;
 }
 
 .profile-pic img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ensures image fills square */
+  object-fit: cover;
   display: block;
 }
 
@@ -45,27 +46,29 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: bold;
   color: #34d399;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 3vw, 1.25rem);
   color: #9ca3af;
   margin-bottom: 1rem;
 }
 
 .intro {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   line-height: 1.6;
   color: #d1d5db;
+  margin-bottom: 1.5rem;
 }
 
 .cta-buttons {
-  margin-top: 1.5rem;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -76,6 +79,7 @@
   font-weight: bold;
   text-decoration: none;
   transition: all 0.3s ease;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 .btn:hover {
   background: #22c07c;
@@ -90,4 +94,68 @@
 .btn-outline:hover {
   background: #34d399;
   color: #0b1022;
+}
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .about-card {
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn {
+    text-align: center;
+    min-width: 140px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .about-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
+
+  .about-content {
+    text-align: center;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: auto;
+    padding: 0.75rem 1rem;
+  }
 }

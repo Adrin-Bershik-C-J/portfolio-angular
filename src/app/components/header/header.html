@@ -1,13 +1,28 @@
 <nav [class.scrolled]="scrolled" class="nav">
-<div class="nav-inner">
-<a class="brand" routerLink="/about">AB</a>
-<button class="hamburger" id="menuToggle" aria-label="Toggle Menu" onclick="document.body.classList.toggle('open-nav')">
-<span></span><span></span><span></span>
-</button>
-<ul class="links">
-<li *ngFor="let item of nav">
-<a [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ item.label }}</a>
-</li>
-</ul>
-</div>
+  <div class="nav-inner">
+    <a class="brand" routerLink="/about" (click)="closeMobileMenu()">AB</a>
+    
+    <button 
+      class="hamburger" 
+      [class.active]="mobileMenuOpen"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle Menu"
+      aria-expanded="{{ mobileMenuOpen }}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <ul class="links" [class.open]="mobileMenuOpen">
+      <li *ngFor="let item of nav">
+        <a 
+          [routerLink]="item.path" 
+          routerLinkActive="active" 
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMobileMenu()">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>

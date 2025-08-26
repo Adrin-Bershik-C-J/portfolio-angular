@@ -1,14 +1,18 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
-}
-body {
   margin: 0;
+  padding: 0;
+}
+
+body {
   background: #0b1022;
   color: #e5e7eb;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Smooth scroll for nicer in-page navigation */
@@ -20,4 +24,77 @@ html {
 :focus {
   outline: 2px solid #34d399;
   outline-offset: 2px;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive text */
+p,
+span,
+div {
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Prevent text overflow on small screens */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina displays if needed */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for mobile */
+  button,
+  a,
+  input,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remove hover effects on touch devices */
+  .btn:hover,
+  .skill:hover,
+  .project-card:hover,
+  .about-card:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
